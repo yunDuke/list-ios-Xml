@@ -1,15 +1,15 @@
 //
-//  ViewController.swift
+//  defenseViewController.swift
 //  player
 //
-//  Created by 杜鋆 on 29/02/2016.
+//  Created by 杜鋆 on 06/03/2016.
 //  Copyright © 2016 杜鋆. All rights reserved.
 //
 
 import UIKit
 import MapKit
+class defenseViewController: UIViewController {
 
-class ViewController: UIViewController {
     var peopleModel = People(fromXMLFile: "people.xml")
     
     var v : Int!
@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     var index = 0
     var l :Double!
     var long : Double!
-  
+    
     @IBOutlet weak var change: UISegmentedControl!
     
     @IBAction func change(sender: UISegmentedControl) {
@@ -42,8 +42,8 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view, typically from a nib.
         self.title = "Person Info"
         index = v
-         l = Double(person.latitude)
-         long = Double(person.longitude)
+        l = Double(person.latitude)
+        long = Double(person.longitude)
         var location = CLLocationCoordinate2D(
             latitude: l,
             longitude: long
@@ -76,13 +76,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
     @IBOutlet weak var name: UILabel!
-   
+    
     @IBOutlet weak var mapview: MKMapView!
-
+    
     @IBOutlet weak var des: UITextView!
-  
+    
     @IBOutlet weak var country: UILabel!
     @IBOutlet weak var age: UILabel!
     @IBOutlet weak var address: UILabel!
@@ -148,20 +148,19 @@ class ViewController: UIViewController {
         var annotation = MKPointAnnotation()
         annotation.coordinate = location
         annotation.title = peopleModel.data[index].marker
-
+        
         
         
         mapview.addAnnotation(annotation);
     }
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "segue6" {
+        if segue.identifier == "segue5" {
             let controller = segue.destinationViewController as! DetailViewController
-//            controller.person = self.person
-            controller.person = peopleModel.data[index]
+            controller.person = self.person
+            //            controller.person = peopleModel.data[index]
         }
     }
-
+    
     
     
 }
-
